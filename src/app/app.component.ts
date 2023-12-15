@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SignalComponent, reactive } from './reactive-decorator';
+import { ReactiveComponent, Reactive } from './reactive-decorator';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,10 @@ import { SignalComponent, reactive } from './reactive-decorator';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-@SignalComponent()
+@ReactiveComponent()
 export class AppComponent {
 
-  @reactive
+  @Reactive
   accessor title = 'v17-reactive';
 
   onClick() {

@@ -17,7 +17,7 @@ import {
 
 const reactiveComponents = new WeakMap<object, WritableSignal<unknown>[]>();
 
-export function reactive<T extends object, V>(
+export function Reactive<T extends object, V>(
   _target: ClassAccessorDecoratorTarget<T, V>,
   context: ClassAccessorDecoratorContext<T, V>
 ): ClassAccessorDecoratorResult<T, V> | void {
@@ -54,11 +54,13 @@ type ClassDecoratorFunction<
   Class extends new (...args: any) => any = new (...args: any) => any
 > = (target: Class, context: ClassDecoratorContext<Class>) => Class | void;
 
-export function SignalComponent<T extends new (...args: any) => any>(
+export function ReactiveComponent<T extends new (...args: any) => any>(
   detach = true
 ): ClassDecoratorFunction<T> {
   return (target, context) => {
     context.addInitializer(function () {
+      // Forward special Angular static properties to allow the framework to initialize the component.
+
       // @ts-ignore
       if (target[ɵNG_COMP_DEF]) {
         // @ts-ignore
