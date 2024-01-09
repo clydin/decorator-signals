@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ReactiveComponent, Reactive } from './reactive-decorator';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template:`
+    <h1>Hello, {{ title }}</h1>
+    <p>Congratulations! Your app is running. 🎉</p>
+    <button (click)="onClick()">CLICK ME</button>
+  `,
 })
 @ReactiveComponent()
 export class AppComponent {
