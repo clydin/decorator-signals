@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { ReactiveComponent, Reactive } from './reactive-decorator';
+import { Reactive } from './reactive-decorator';
+import { TextComponent } from './text.component';
 
 @Component({
   selector: 'app-root',
+  imports: [TextComponent],
   standalone: true,
   template:`
-    <h1>Hello, {{ title }}</h1>
+    <app-text [value]="title"/>
     <p>Congratulations! Your app is running. 🎉</p>
     <button (click)="onClick()">CLICK ME</button>
   `,
 })
-@ReactiveComponent()
 export class AppComponent {
 
   @Reactive
